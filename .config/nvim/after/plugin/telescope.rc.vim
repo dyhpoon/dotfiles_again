@@ -28,6 +28,7 @@ telescope.setup{
       },
   },
 }
+
+telescope.load_extension "file_browser"
 EOF
 
-require('telescope').load_extension "file_browser"
