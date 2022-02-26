@@ -6,6 +6,7 @@ nnoremap  <silent> ;b <cmd>lua require('telescope.builtin').file_browser()<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
+
 lua << EOF
 function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
@@ -30,5 +31,16 @@ telescope.setup{
 }
 
 telescope.load_extension "file_browser"
+telescope.load_extension "fzf"
+
+local M = {}
+M.search_dotfiles = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< VimRC >",
+        cwd = "~/dev/dotfiles-again/",
+        hidden = true,
+    })
+end
+
 EOF
 
